@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Server name: `hostname`"
+echo "Server name: `hostname!`"
 echo " "
 
 echo "Server IP address is: `hostname -I`"
