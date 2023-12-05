@@ -3,7 +3,9 @@ pipeline{
         stages{
             stage('stage1'){
                 steps{
-                   script 'echo This is stage1 triggerd by ${user}'
+                   script {
+                           'echo This is stage1 triggerd by ${user}'
+                   }
                 }
 
             }
