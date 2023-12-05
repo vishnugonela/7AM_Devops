@@ -1,0 +1,20 @@
+pipeline{
+        agent any
+        stages{
+            stage('stage1'){
+                steps{
+                   sh 'echo This is stage1'
+                }
+
+            }
+            stage('stage2'){
+                steps{
+                   sh '''
+                        echo "Hello from stage2"
+                   '''
+                }
+            }
+
+        }
+
+}
