@@ -8,7 +8,7 @@ read username
 
 # Check if the username is valid.
 if [[ $username =~ ^[A-Z_-]+$ ]]; then
-  echo "Thank you, your username is $username."
+  echo "Thank you, your username is $username"
 else
   echo "Invalid username. Please try again."
 fi
