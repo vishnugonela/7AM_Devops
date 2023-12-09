@@ -4,7 +4,7 @@
 
 # Ask the user for their username.
 echo "Please enter your username: "
-read {username}
+read -P {username}
 
 # Check if the username is valid.
 if [[ ${username} =~ ^[A-Z]+$ ]]; then
