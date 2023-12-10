@@ -1,25 +1,38 @@
 pipeline {
-  agent any
-  stages {
-    stage('Input') {
-      steps {
-        input(id: 'userInput', message: 'Please enter your name')
-      }
+    agent any
+
+    parameters {
+        string(name: 'USERNAME', defaultValue: '', description: 'Enter your username')
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'prod'], description: 'Select environment')
     }
-    stage('Validate') {
-      steps {
-        // Validate the user input
-        def username = params.USERNAME
+
+    stages {
+        stage('User Input and Validation') {
+            steps {
+                script {
+                    // Validate and process USERNAME
+                    def username = params.USERNAME
                     if (username.isEmpty()) {
-          error('User input must not be empty')
+                        error("Username cannot be empty.")
+                    } else {
+                        echo "Username: ${username}"
+                    }
+
+                    // Validate and process ENVIRONMENT
+                    def environment = params.ENVIRONMENT
+                    if (!['dev', 'qa', 'prod'].contains(environment)) {
+                        error("Invalid environment selected.")
+                    } else {
+                        echo "Selected Environment: ${environment}"
+                    }
+                }
+            }
         }
-      }
+
+        stage('Your Other Stages') {
+            steps {
+                // Add your other stages here
+            }
+        }
     }
-    stage('Proceed') {
-      steps {
-        // Proceed with the pipeline
-        echo "User input: $userInput"
-      }
-    }
-  }
-} 
+}
