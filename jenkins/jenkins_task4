@@ -28,11 +28,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Your Other Stages') {
-            steps {
-                // Add your other stages here
-            }
-        }
     }
 }
