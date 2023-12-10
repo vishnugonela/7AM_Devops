@@ -8,9 +8,9 @@ pipeline{
 		}
 		stage('stage2'){
 			steps{
-				sh 
+				sh '''
 					echo "Hello from stage2"
-				
+				'''
 			}
 		}
 		stage('stage3'){
