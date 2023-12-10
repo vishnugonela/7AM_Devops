@@ -14,11 +14,13 @@ pipeline{
 				'''
 			}
 		}
-    stage('stage3'){
-      steps{
-        sh '''
-            bash ${WORKSPACE}/linux/Task1.sh
-          '''
-    }
+    		stage('stage3'){
+      			steps{
+        			sh '''
+            				bash ${WORKSPACE}/linux/Task1.sh
+          			'''
+    			}
+		}
 	}
 }
+
