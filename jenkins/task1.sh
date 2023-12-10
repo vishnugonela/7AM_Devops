@@ -13,5 +13,12 @@ pipeline{
 				
 			}
 		}
-	}
+		stage('stage3'){
+  steps{
+  sh '''
+  bash ${WORKSPACE}/linux/file1.sh
+  '''
+  }
+  }
+ }
 }
