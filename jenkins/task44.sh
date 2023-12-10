@@ -9,16 +9,16 @@ pipeline {
     stage('Validate') {
       steps {
         // Validate the user input
-        def userInput = 'params.userInput'
-        if ('userInput' == '') {
-          //error('User input must not be empty')
+        def $userInput = params.userInput
+        if ($userInput == '') {
+          error('User input must not be empty')
         }
       }
     }
     stage('Proceed') {
       steps {
         // Proceed with the pipeline
-        echo "User input: $userInput"
+        echo "UserInput: $userInput"
       }
     }
   }
