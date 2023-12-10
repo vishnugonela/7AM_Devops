@@ -11,7 +11,7 @@ pipeline {
         // Validate the user input
         def userInput = params.userInput
         if (userInput == '') {
-          error('User input must not be empty')
+          //error('User input must not be empty')
         }
       }
     }
