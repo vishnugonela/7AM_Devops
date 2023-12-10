@@ -10,7 +10,7 @@ pipeline {
       steps {
         // Validate the user input
         def userInput = params.userInput
-        if {userInput = ''} {
+        if (userInput = '') {
           error('User input must not be empty')
         }
       }
