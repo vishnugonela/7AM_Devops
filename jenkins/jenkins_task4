@@ -9,8 +9,8 @@ pipeline {
     stage('Validate') {
       steps {
         // Validate the user input
-        def userInput = "env.userInput"
-        if (userInput == '') {
+        def username = params.USERNAME
+                    if (username.isEmpty()) {
           error('User input must not be empty')
         }
       }
