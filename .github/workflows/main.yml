@@ -34,3 +34,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  deploy_job:
+    runs-on: webserver
+    steps:
+        - name: deploy step
+          run: |
+             echo "Listing Workspace files"
+             ls ${{ github.workspace }}
+
