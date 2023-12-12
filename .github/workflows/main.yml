@@ -36,9 +36,11 @@ jobs:
           echo test, and deploy your project.
   deploy_job:
     runs-on: webserver
+    needs: [ build_job ]
     steps:
         - name: deploy step
           run: |
              echo "Listing Workspace files"
              ls ${{ github.workspace }}
+             bash ${{ github.workspace }}/linux/script.sh
 
