@@ -1,10 +1,16 @@
 pipeline {
-      agent {label 'jenkins_server'} 
+      agent any
       stages {
-          stage('Clone the Repo:') { 
+          stage('Master and slave details:') { 
               steps {
-                  echo "the master server address `hostname -I`"  
-                  echo "the memory of the server `free -m`"
+                 
+                 sh '''
+                 echo "Building the `hostname -I` the server hostname"
+                 echo "the total memory of the space `free -m`"
+                 echo "The total disk size in the node is `df -h`in "
+                 
+                 '''
+                 
               }
           }
       }
