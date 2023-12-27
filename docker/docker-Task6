@@ -1,0 +1,66 @@
+pipeline {
+   agent any 
+     stages {
+      stages('Building Docker Image') {
+        steps {
+         script {
+            sh ''''
+          echo "<h1> container name : `hostname`</h1>" > /var/www//html/index.html
+          echo "<h1> container IP   : `hostname -I`</h1>" >> /var/www/html/index.html
+          echo "<h1> container date : `date`</h1>" >> /var/www/html/index.html 
+          }
+     }
+  }
+   stage ('Tag Image') {
+    steps {
+      // Tagging the build
+        docker image build -t docker_image:1.0 ganthimerirupa/docker_image:1.0
+       }
+    }   
+    
+  stage ('push image to Docker hub')  {
+    steps {
+ 
+         // pushing the tagged image to docker Hub
+        docker image push ganthimerirupa/docker_image:1.0
+      
+    }
+  }
+  stage ('pull image on slave') { // making sure Docker is installed on the slave
+       sh 'docker --version'
+      // pulling the image on the slave 
+      docker pull ganthimerirupa/docker_image:1.0
+      }
+    }
+  }
+  stage('create container and validate') {
+    steps {
+     script {
+      // Running the container on the slave
+       docker container run "ganthimerirupa/docker_image:1.0","-d -p 9000:80"
+      // validate the application is running
+       sh'curl http://localhost:9000'
+        }
+      }
+    }
+  }
+  post {
+    sucess {
+     echo 'pipeline succesfully executed!'
+      }
+    failure {
+     echo 'pipeline failed!'
+     }
+   }
+ }
+// Docker Hub credentials configuration
+  creadentials {
+    username = 'ganthimerirupa'
+    password = '---'
+    }
+}
+
+
+
+    steps {
+      script {
