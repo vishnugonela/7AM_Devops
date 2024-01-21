@@ -1,0 +1,27 @@
+---
+- name: Launch EC2 Instance
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Create EC2 instance
+      ec2_instance:
+        key_name: your_key_pair_name
+        group: your_security_group
+        instance_type: t2.micro
+        image: ami-xxxxxxxxxxxxxxxxx  # Replace with your desired AMI ID
+        wait: yes
+        count: 1
+        region: your_aws_region
+        vpc_subnet_id: your_subnet_id
+        assign_public_ip: yes
+        instance_tags:
+          - key: Name
+            value: your_instance_name
+        aws_access_key: your_access_key
+        aws_secret_key: your_secret_key
+      register: ec2
+
+    - name: Show information about the created instance
+      debug:
+        var: ec2.instances
+...        
