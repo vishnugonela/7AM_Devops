@@ -1,9 +1,0 @@
-#!/bin/bash
-
-read -p "Enter a string: " name
-length=${#name}
-
-for (( i=$length; i>0; i-- )); do
- 
-  echo "${name:$i-1:1}"
-done
