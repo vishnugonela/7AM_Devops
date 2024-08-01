@@ -1,8 +1,16 @@
 #!/bin/bash
 
-echo "Display usage details"
+echo "script for the Accept username & password"
 echo "********************"
+echo "password must be "upper+lower case""
 
-echo "Display cpu usage details: "
-mpstat
+read -p "Enter username: " username
+read -sp "Enter password: " password
 
+if [[ $password =~ ^[a-zA-Z]+$ ]];
+then
+     echo "Password is valid"
+else
+   echo "password must be "upper+lower letters""
+   
+fi
