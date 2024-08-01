@@ -4,12 +4,5 @@
 echo "Memory utilization"
 echo "*****************"
 
-echo "disk usage: "
+echo "disk usage in remote: "
 df -h
-
-echo "memory usage: "
-free -h
-
-echo "cpu usage: "
-mpstat
-
