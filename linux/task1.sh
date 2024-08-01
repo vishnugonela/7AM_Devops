@@ -4,7 +4,7 @@
 echo "Memory utilization"
 echo "*****************"
 
-echo "disk usage: "
+echo "disk usage in local : "
 df-h
 
 
