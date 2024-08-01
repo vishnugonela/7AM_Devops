@@ -5,6 +5,6 @@ echo "Memory utilization"
 echo "*****************"
 
 echo "disk usage: "
-free -h
+df-h
 
 
