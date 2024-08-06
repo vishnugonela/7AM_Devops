@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo "Script for Task1"
+for i in {1..5}
+   do
+       echo "Created a taks1.sh file"
+   done
