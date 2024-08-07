@@ -20,7 +20,7 @@ pipeline{
              stage('deploy'){
                           steps{
                         sh '''
-                       bash ${workspace}/linux/task1.sh
+                       bash ${WORKSPACE}/linux/task1.sh
                       echo "build  is succesful on deploy stage "
                         '''
                                  
