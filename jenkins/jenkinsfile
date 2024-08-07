@@ -18,13 +18,20 @@ pipeline{
                     }
 
              stage('deploy'){
-                          steps{
+                          steps1{
                         sh '''
                        bash ${WORKSPACE}/linux/task1.sh
                       echo "build  is succesful on deploy stage "
                         '''
                                  
-                                 }    
+                                 }
+                       steps2{
+                        sh '''
+                       bash ${WORKSPACE}/linux/task3.sh
+                      echo "build  is succesful on deploy stage "
+                        '''
+                                 
+                                 }
                }
         }  
 }
