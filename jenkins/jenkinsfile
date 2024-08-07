@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Server Details') {
             steps {
-                script {
                     echo "Retrieving CPU and Memory Information:"
                     def cpuInfo = sh('lscpu')
                     def memoryInfo = sh('free -h')
@@ -20,4 +19,3 @@ pipeline {
             }
         }
     }
-}
