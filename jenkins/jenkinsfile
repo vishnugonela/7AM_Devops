@@ -5,9 +5,9 @@ pipeline {
             steps {
                 script {
                     echo "Retrieving CPU and Memory Information:"
-                    def cpuInfo = sh(script: 'lscpu')
-                    def memoryInfo = sh(script: 'free -h')
-                    def systemInfo = sh(script: 'uname -a')
+                    def cpuInfo = sh('lscpu')
+                    def memoryInfo = sh('free -h')
+                    def systemInfo = sh('uname -a')
                     echo "CPU Information:"
                     echo cpuInfo
 
