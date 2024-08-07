@@ -19,11 +19,8 @@ pipeline{
 
                 stage('deploy'){
                           steps{
-                        sh '''
-                        bash${WORKSPACE}/linux/task1.sh
-                        echo "build  is succesful on test stage "
-                          '''
-                                 
+                        sh 'echo "build  is succesful on test stage "'
+                               
                                  }
                        }
                }                        
