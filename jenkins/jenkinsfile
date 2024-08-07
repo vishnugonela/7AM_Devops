@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Retrieve Server Details') {
+        stage('Server Details') {
             steps {
                 script {
                     echo "Retrieving CPU and Memory Information:"
