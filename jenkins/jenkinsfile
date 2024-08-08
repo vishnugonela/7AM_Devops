@@ -13,9 +13,11 @@ pipeline {
                     echo "Memory Information:"
                     echo ${memoryInfo}
                     free -h
+
                     echo "System Information:"
                     echo ${systemInfo}
                     uname -a
+
                    '''
             }
         }
