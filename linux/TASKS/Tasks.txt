@@ -1,0 +1,75 @@
+PART !
+
+1. What is the command to find a file 
+	a. file(s) must be ends with .java
+	b. file size must be greater than 10 MB
+	c. file must be older than 10 days
+	d. all files under /var directory which ends with .log
+
+2. What is the command to find a 'string' in a file
+	a. string must be a '6' digit word
+	b. string starts with 'V' and ends with 'U'
+	c. string contains like _B_D_   also, A_C_E
+	d. Search a strings 'abc' and 'def'
+		- OR ( abc or def)
+		- AND (abc and def)
+
+
+PART 2
+
+1. Write a shell script to print server details.
+Name:
+Memory:
+CPU:
+Disk
+
+1.1  Write a shell script to print running process based of CPU utilization.
+
+2. Write a shell script to print file content details. 
+
+Like No of Words, lines, characters.  You must accept input from the user. 
+
+3. Write a shell script to find a file in specific directory. 
+
+	    a. Script should accept user input for path & filename
+     
+	    b.  if path not found or empty then script can take default path as /
+
+4. Write a shell script to find all files ends with ".java" in a directory(s)
+	   a. run a loop with count of files found
+   	b. if files found filter only last 10 days
+   	c. Delete files last 10days 
+
+5. Write a shell script to install a package called 'tomcat'
+    a. Before installing check whether package installed or not
+6. Write a shell script to find your server IPV4 address, validate IPV4 address format only.
+	b. Filter only IPV6
+
+7. Write a shell script to accept input from user as their username only. 
+   a. username must be 'string'
+   b. username must be 'UPPERCASE'
+   c. username should not contain spaces
+8. Accept username & password
+   a. password must be "alphanumeric"
+    b. password must be "upper+lower case"
+
+9. Write a shell script to call 'functions' from other script.
+	fun.sh  , script.sh
+
+10. Write a shell script to loop based on number of characters in a string.
+
+      Ex:- Accept a string(name) : vishnu 
+
+            loop suupose excute from V to U (6 digits)
+11.Write a shell script to accept string from the user, then print numbers of characters count along with its letter>
+
+Ex:  String = password
+     O/p=   p=1
+            a=1
+            s=2 
+            w=1 
+            o=1 
+            r=1 
+            d=1 
+
+12. Write a shell script to loop based on number of files in current directory.
