@@ -1,11 +1,10 @@
 pipeline {
     agent any
-    
     stages {
         stage('Server Details') {
             steps {
                 sh '''
-                    echo "Retrieving CPU and Memory Information from `hostname` by ${username}:"
+                    echo "Server Details:"
                     echo "CPU Information:"
                     echo ${cpuInfo} : 
                     lscpu
