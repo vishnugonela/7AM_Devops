@@ -1,7 +1,7 @@
 def cpuInfo = 'lscpu'
 def memoryInfo = 'free -h'
 def systemInfo = 'uname -a'
-def username=Vishnu                  
+def username='Vishnu'                  
 
 pipeline {
     agent any
