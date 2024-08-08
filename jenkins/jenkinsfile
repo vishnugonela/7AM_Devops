@@ -1,6 +1,6 @@
-def cpuInfo = sh('lscpu')
-def memoryInfo = sh('free -h')
-def systemInfo = sh('uname -a')
+def cpuInfo = 'lscpu'
+def memoryInfo = 'free -h'
+def systemInfo = 'uname -a'
                     
 pipeline {
     agent any
