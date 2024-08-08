@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Server Details:"
+
                     echo "CPU Information:"
                     echo ${cpuInfo} : 
                     lscpu
