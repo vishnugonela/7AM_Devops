@@ -1,8 +1,3 @@
-def cpuInfo = 'lscpu'
-def memoryInfo = 'free -h'
-def systemInfo = 'uname -a'
-def username='Vishnu'                  
-
 pipeline {
     agent any
     
@@ -22,10 +17,6 @@ pipeline {
                     echo ${systemInfo}
                     uname -a
                    '''
-                script {
-                    echo "Retrieving CPU and Memory Information from `hostname` by ${username}:"
-
-                }
             }
         }
     }
