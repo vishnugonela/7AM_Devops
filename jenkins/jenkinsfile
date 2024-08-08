@@ -22,6 +22,10 @@ pipeline {
                     echo ${systemInfo}
                     uname -a
                    '''
+                script {
+                    echo "Retrieving CPU and Memory Information from `hostname` by ${username}:"
+
+                }
             }
         }
     }
