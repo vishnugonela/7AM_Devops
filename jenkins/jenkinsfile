@@ -1,3 +1,7 @@
+def cpuInfo = sh('lscpu')
+def memoryInfo = sh('free -h')
+def systemInfo = sh('uname -a')
+                    
 pipeline {
     agent any
     stages {
@@ -5,17 +9,14 @@ pipeline {
             steps {
                 script{
                     echo "Retrieving CPU and Memory Information:"
-                    def cpuInfo = sh('lscpu')
-                    def memoryInfo = sh('free -h')
-                    def systemInfo = sh('uname -a')
                     echo "CPU Information:"
-                    echo cpuInfo
+                    echo ${cpuInfo}
 
                     echo "Memory Information:"
-                    echo memoryInfo
+                    echo ${memoryInfo}
 
                     echo "System Information:"
-                    echo systemInfo
+                    echo ${systemInfo}
                }
             }
         }
