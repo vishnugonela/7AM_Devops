@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Server Details') {
             steps {
-                script{
+                sh '''
                     echo "Retrieving CPU and Memory Information:"
                     echo "CPU Information:"
                     echo ${cpuInfo}
@@ -19,7 +19,7 @@ pipeline {
 
                     echo "System Information:"
                     echo ${systemInfo}
-               }
+                   '''
             }
         }
     }
