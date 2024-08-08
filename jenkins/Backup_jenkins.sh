@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Backup_Dir="/home/ec2-user/backup/jenkins_backup"
+Backup_Dir="/home/ec2-user/backup"
 Backup_file="backup/jenkins_backup"
 Jenkins_home="/var/lib/jenkins"
 
