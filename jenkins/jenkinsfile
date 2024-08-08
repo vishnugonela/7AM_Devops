@@ -1,9 +1,11 @@
-def cpuInfo = 'lscpu'
-def memoryInfo = 'free -h'
-def systemInfo = 'uname -a'
                     
 pipeline {
     agent any
+
+  def cpuInfo = 'lscpu'
+  def memoryInfo = 'free -h'
+  def systemInfo = 'uname -a'
+
     stages {
         stage('Server Details') {
             steps {
