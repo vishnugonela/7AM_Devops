@@ -1,6 +1,7 @@
 def cpuInfo = 'lscpu'
 def memoryInfo = 'free -h'
 def systemInfo = 'uname -a'
+def username="Vishnu"
                     
 pipeline {
     agent any
@@ -9,7 +10,7 @@ pipeline {
         stage('Server Details') {
             steps {
                 sh '''
-                    echo "Retrieving CPU and Memory Information:"
+                    echo "Retrieving CPU and Memory Information from `hostname` by ${username}:"
                     echo "CPU Information:"
                     echo ${cpuInfo} : 
                     lscpu
