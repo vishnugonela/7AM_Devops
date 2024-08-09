@@ -1,21 +1,22 @@
-pipeline{
-  agent any
-stages{
-     stage('Build')
-        steps{
-            echo "Build is successfull"
-    }
-}
+pipeline {
+    agent any
 
-stage('Test')
-steps{
-echo "Build is successfull"
-   }
-}
- stages('deploy')
-steps{
-echo "Build is successfull"
+    stages {
+        stage('build') {
+            steps { 
+               sh 'echo "build is successful"'
+            }
         }
-     }
-   }
+         stage('deploy') {
+            steps {
+                sh 'echo "build is successful"'
+            }
+        }
+        stage('test'){
+            steps{
+                sh 'echo "build is successful"'
+            }
+        }
+        
+    }
 }
