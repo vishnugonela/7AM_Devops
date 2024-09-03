@@ -1,0 +1,8 @@
+FROM ubuntu:latest
+
+RUN /bin/sh -c apt-get update && apt-get install -y apache2 && apt-get clean 
+
+RUN /bin/sh -c echo "<html><body><h1>Hostname: $(hostname)</h1><h2>Date: $(date)</h2></body></html>" > /var/www/html/index.html
+
+EXPOSE 80
+CMD ["apachectl", "-D", "FOREGROUND"]
