@@ -1,0 +1,18 @@
+#shell script to create a  10 containers
+#	- Check before creating contianer whether container is existed or not. if exist you have delete and create contianer
+#!/bin/bash
+image=$("ubuntu_webpage")
+for i in {1..10};
+do
+    container="$image_$i"
+    if [ docker ps -aq -f name=$container ];
+ then
+        echo "Container $container exists so delete and recreate"
+        docker container rm -f container
+        docker container run -d -it --name container -p 9090:80 image
+    else
+        #echo "Creating container"
+        #docker run -d -it --name $container -p 9090:80 image 
+        echo "Container don't exist"
+    fi
+done
