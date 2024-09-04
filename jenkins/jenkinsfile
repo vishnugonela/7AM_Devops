@@ -1,1 +1,88 @@
+pipeline {
+    agent any  // Runs on any available agent
+
+    environment {
+        DOCKER_CREDENTIALS_ID = 'dockerhub-ganagdhar'  
+        DOCKER_REPO = 'gangadhara123'    
+        IMAGE_NAME = 'alpine:1.0'                  
+    }
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image from the Dockerfile in the workspace
+                    sh 'docker build -t ${IMAGE_NAME} .'
+                }
+            }
+        }
+
+        stage('Tag Docker Image') {
+            steps {
+                script {
+                    // Tag the Docker image with the Docker Hub repository name
+                    sh 'docker tag ${IMAGE_NAME} ${DOCKER_REPO}/${IMAGE_NAME}'
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    script {
+                        // Log in to Docker Hub
+                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                        // Push the Docker image to Docker Hub
+                        sh 'docker push ${DOCKER_REPO}/${IMAGE_NAME}'
+                    }
+                }
+            }
+        }
+
+        stage('Pull Docker Image on Slave') {
+            agent {
+                label 'slave'  // Specifies the label of the slave machine
+            }
+            steps {
+                script {
+                    // Pull the Docker image on the slave machine
+                 sh 'docker pull ${DOCKER_REPO}/${IMAGE_NAME}'
+                }
+            }
+        }
+
+        stage('Run and Validate Container') {
+            agent {
+                label 'slave'  // Specifies the label of the slave machine
+            }
+            steps {
+                script {
+                    // Run the Docker container on the slave machine
+                    sh 'docker run -d --name my_container ${DOCKER_REPO}/${IMAGE_NAME}'
+
+                    // Validate if the container is running
+                    sh '''
+                    if [ "$(docker ps -q -f name=my_container)" ]; then
+                        echo "Container is running."
+                        # Add more validation commands here if needed
+                    else
+                        echo "Container is not running."
+                        exit 1
+                    fi
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Cleanup: Remove container and image
+            script {
+                sh 'docker container rm -f my_container || true'
+                sh 'docker image rm ${DOCKER_REPO}/${IMAGE_NAME} || true'
+            }
+        }
+    }
+}
 
