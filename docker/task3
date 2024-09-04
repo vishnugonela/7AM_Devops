@@ -2,15 +2,15 @@
 image=sunitnayak/ubuntu_webpage
 for i in {1..10} 
 do
-container="$image_$i"
+container="c$i"
 if [ docker ps -aq -f name="$container" ]
 then
     echo "Container $container exists, deleting and recreating"
     docker container rm -f "$container"
-    docker container run -d -it --name $container -p 9090:80 $image
+    docker container run -d -it --name $container -p 500$i:80 $image
 else
     #echo "Creating container $container..."
-    #docker container run -d -it --name $container -p 9090:80 $image
+    #docker container run -d -it --name $container -p 500$i:80 $image
     echo "container don't exist"
 fi
 done
