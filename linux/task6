@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "ip of server `hostname -I`"
+ipaddress=$(hostname -I)
+for $ipaddress in {10.0.0.0..10.255.255.255}
+do
+        echo "ipaddress is a IPV4"
+done
+~     
